@@ -1,0 +1,110 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Users, ShieldCheck, Lightbulb, Globe } from 'lucide-react';
+
+export default function TeamSection() {
+  const values = [
+    {
+      icon: ShieldCheck,
+      title: 'Compromiso con la seguridad',
+      description: 'La ciberseguridad es nuestra pasión y nuestra responsabilidad. Cada decisión que tomamos prioriza la protección de nuestros usuarios.'
+    },
+    {
+      icon: Users,
+      title: 'Enfoque en el usuario',
+      description: 'Diseñamos pensando en personas reales. Queremos que la seguridad sea simple y accesible, sin tecnicismos innecesarios.'
+    },
+    {
+      icon: Lightbulb,
+      title: 'Innovación constante',
+      description: 'El panorama de amenazas evoluciona, y nosotros también. Investigamos y desarrollamos para estar siempre un paso adelante.'
+    },
+    {
+      icon: Globe,
+      title: 'Accesibilidad global',
+      description: 'Creemos que la protección digital es un derecho. Por eso trabajamos en un plan gratuito que llegue a todos.'
+    }
+  ];
+
+  return (
+    <section className="py-24 bg-slate-900 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent" />
+      
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <span className="text-blue-400 font-medium text-sm uppercase tracking-wider">Sobre DataShark</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mt-4 mb-6">
+            Un equipo comprometido con tu seguridad
+          </h2>
+          <p className="text-slate-400 text-lg max-w-3xl mx-auto">
+            DataShark nace de la convicción de que la ciberseguridad no debería ser exclusiva de grandes corporaciones. 
+            Somos un equipo apasionado por la tecnología y la protección digital, trabajando para crear 
+            soluciones que todos puedan usar.
+          </p>
+        </motion.div>
+
+        {/* Founder message */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="bg-slate-800/50 border border-slate-700 rounded-3xl p-8 md:p-12 mb-16 backdrop-blur-sm"
+        >
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 mx-auto mb-6 flex items-center justify-center">
+              <span className="text-3xl font-bold text-white">DS</span>
+            </div>
+            <blockquote className="text-xl md:text-2xl text-slate-300 italic mb-6 leading-relaxed">
+              "Fundamos DataShark porque vimos una brecha: millones de personas y pequeños negocios 
+              sin acceso a herramientas de protección digital adecuadas. Estamos aquí para cambiar eso."
+            </blockquote>
+            <p className="text-slate-400">
+              — El equipo fundador de DataShark
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Values */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-center mb-12"
+        >
+          <h3 className="text-2xl md:text-3xl font-bold text-white">Nuestros principios</h3>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {values.map((value, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 * index }}
+              className="bg-slate-800/30 border border-slate-700/50 rounded-2xl p-6 hover:border-slate-600 transition-colors duration-300"
+            >
+              <div className="flex items-start gap-4">
+                <div className="p-3 rounded-xl bg-blue-500/10 flex-shrink-0">
+                  <value.icon className="w-6 h-6 text-blue-400" strokeWidth={1.5} />
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-white mb-2">{value.title}</h4>
+                  <p className="text-slate-400 leading-relaxed">{value.description}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

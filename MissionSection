@@ -1,0 +1,75 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Target, Eye, Heart } from 'lucide-react';
+
+export default function MissionSection() {
+  const cards = [
+    {
+      icon: Target,
+      title: 'Nuestra Misión',
+      description: 'Democratizar la ciberseguridad, haciendo que la protección digital de alta calidad sea accesible para todos, desde usuarios individuales hasta pequeñas empresas.',
+      gradient: 'from-blue-500 to-blue-600'
+    },
+    {
+      icon: Eye,
+      title: 'Nuestra Visión',
+      description: 'Convertirnos en el referente de seguridad digital accesible, creando un ecosistema donde cada persona pueda navegar y almacenar sus datos con total tranquilidad.',
+      gradient: 'from-cyan-500 to-cyan-600'
+    },
+    {
+      icon: Heart,
+      title: 'Nuestros Valores',
+      description: 'Transparencia, innovación y compromiso con nuestros usuarios. Creemos en la seguridad sin complicaciones y en la privacidad como derecho fundamental.',
+      gradient: 'from-violet-500 to-violet-600'
+    }
+  ];
+
+  return (
+    <section className="py-24 bg-slate-950 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
+      
+      <div className="max-w-6xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <span className="text-blue-400 font-medium text-sm uppercase tracking-wider">Quiénes somos</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mt-4 mb-6">
+            Construyendo el futuro de la
+            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent"> seguridad digital</span>
+          </h2>
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+            En DataShark creemos que la ciberseguridad no debería ser un lujo. 
+            Estamos trabajando para cambiar eso.
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {cards.map((card, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group relative"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-0 group-hover:opacity-100" />
+              <div className="relative bg-slate-900/80 border border-slate-800 rounded-3xl p-8 h-full backdrop-blur-sm hover:border-slate-700 transition-all duration-500">
+                <div className={`inline-flex p-3 rounded-2xl bg-gradient-to-br ${card.gradient} mb-6`}>
+                  <card.icon className="w-6 h-6 text-white" strokeWidth={1.5} />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">{card.title}</h3>
+                <p className="text-slate-400 leading-relaxed">{card.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
